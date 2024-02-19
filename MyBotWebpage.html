@@ -1,0 +1,115 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+</head>
+<style>
+
+  #title{
+    margin: 26px 71px;
+    padding: 9px;
+    font-size: 19px;
+    border: 2px solid rgb(5, 5, 5);
+    border-radius: 9px;
+    background-color: rgb(229 48 219);
+
+  }
+  #wifi{
+    margin: 15px 90px;
+    padding: 9px;
+    font-size: 19px;
+    border: 2px solid rgb(5, 5, 5);
+    border-radius: 9px;
+    background-color: rgb(130 229 48);
+
+  }
+
+  .unselectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    border: 2px solid rgb(31, 6, 252);
+    border-radius: 9px;
+    background-color: rgb(249 245 7);
+    font-size: 20px;
+}
+.box:hover{
+  color: rgb(255, 102, 0);
+  background-color: rgb(0, 247, 255);
+}
+
+
+</style>
+
+<body style="background-image: linear-gradient(45deg,green,white,red);">
+
+<div style="text-align:center;">
+  <h1 id="title">EMT Project</h1>
+</div>
+
+<div style="text-align:center;">
+  <h1 id="wifi">Wi-Fi Car</h1>
+</div></br></br></br>
+
+<div style="text-align:center;">
+	<button class="unselectable box" ontouchstart="up()" ontouchend="off()" style="height:92px;width:92px;"> Up </button>
+</div>
+
+</br>
+
+  <div style="float:left;">
+    <button class="unselectable box" ontouchstart="left()" ontouchend="off()" style="height:91px;width:91px;"> Left </button>
+  </div>
+  
+  <div style="float:right;">
+    <button class="unselectable box" ontouchstart="right()" ontouchend="off()" style="height:91px;width:91px;"> Right </button>
+  </div>
+  
+  <div style="text-align:center;">
+	  <button class="unselectable box" id="toggle" ontouchstart="toggle()" style="height:91px;width:91px;">Start
+</button>
+  </div>
+  </br>
+
+<div style="text-align:center;">
+        <button class="unselectable box" ontouchstart="down()" ontouchend="off()" style="height:92px;width:92px;"> Down </button>                                                    </div>
+
+<script>
+    var start = 1;
+    var url = "http://192.168.4.1/control?";
+    function up(){
+        fetch(url+"up")
+    }
+    
+    function down(){
+        fetch(url+"down")
+    }
+
+    function left(){
+        fetch(url+"left")
+    }
+    
+    function right(){
+        fetch(url+"right")
+    }
+
+    function off(){
+        fetch(url+"off")
+    }
+
+    function toggle(){
+        if(start==1){
+	   start=0;
+           document.getElementById("toggle").innerHTML="Start"
+	   fetch(url+"stop");
+	}else{
+           start=1;                                                    document.getElementById("toggle").innerHTML="Stop"
+           fetch(url+"start");
+	}
+    }
+</script>
+</body>
+</html>
